@@ -9,11 +9,14 @@ scene=0
 score=0
 screenwidth = 127
 screenheight = 127
-
+symbols={}
 -- game loop
 
 function _init()
 -- this function runs as soon as the game loads
+for x=1,5 do 
+	 add(symbols, spawnsymbol())
+ end
 end
 
 function _update()
@@ -63,6 +66,20 @@ function gamedraw()
 	map(0,0,0,0,128,32)
 end
 
+function symboldraw()
+ for symbol in all(symbols) do
+ spr(2,sybmol.x,symbol.y)
+ end
+end
+
+--init fuctions
+function spawnsymbol()
+local symbol={}
+	symbol.x=rnd(100)+10
+	symbol.y=10
+return symbol
+end
+ 
 -- library functions
 --- center align from: pico-8.wikia.com/wiki/centering_text
 function hcenter(s)
