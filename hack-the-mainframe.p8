@@ -11,6 +11,8 @@ screenwidth = 127
 screenheight = 127
 symbols={}
 symbolspr=rnd(2)+3
+symbol=1
+symboltimer=0
 -- game loop
 
 function _init()
@@ -41,7 +43,12 @@ function titleupdate()
 end
 
 function gameupdate()
-	score+=1
+ symboltimer-=1
+	symbolupdate()
+end
+
+function symbolupdate()
+	symbol+=1
 end
 
 -- draw functions
@@ -69,6 +76,7 @@ end
 function symboldraw()
  for symbol in all(symbols) do
  spr(symbolspr,symbol.x,symbol.y)
+ symbol.y+=1
  end
 end
 
