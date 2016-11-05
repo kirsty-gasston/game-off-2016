@@ -10,13 +10,12 @@ score=0
 screenwidth = 127
 screenheight = 127
 symbols={}
+symbolspr=rnd(2)+3
 -- game loop
 
 function _init()
 -- this function runs as soon as the game loads
-for x=1,5 do 
 	 add(symbols, spawnsymbol())
- end
 end
 
 function _update()
@@ -64,11 +63,12 @@ function gamedraw()
 	rectfill(0,0,screenwidth, 10, 0)
 	print("score: " .. score, 10, 4, 3)
 	map(0,0,0,0,128,32)
+	symboldraw()
 end
 
 function symboldraw()
  for symbol in all(symbols) do
- spr(2,sybmol.x,symbol.y)
+ spr(symbolspr,symbol.x,symbol.y)
  end
 end
 
